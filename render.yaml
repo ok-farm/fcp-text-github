@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: fcp-text-github
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --config gunicorn.conf.py app:app
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: WEB_CONCURRENCY
+        value: 1
